@@ -1,5 +1,5 @@
 import pyglet
-
+from random import randint
 from data.init import WINDOW_HEIGHT, WINDOW_WIDTH
 
 def create_sprite(width, height, color, name=None):
@@ -20,3 +20,7 @@ def center_into(sprite, p_sprite=None):
     if p_sprite == None:
         sprite.x = WINDOW_WIDTH // 2 - sprite.width // 2
         sprite.y = WINDOW_HEIGHT // 2 - sprite.height // 2
+
+def set_random_pos(sprite):
+    sprite.x = randint(0, WINDOW_WIDTH - sprite.width)
+    sprite.y = randint(0, WINDOW_HEIGHT - sprite.height)

@@ -3,7 +3,7 @@ from controls.utils import create_controls_dict
 from game_rules.dialog_rules import next_replic
 
 def on_key_press(symbol, modifier):
-    if symbol == key.ENTER:
+    if symbol == key.SPACE:
         next_replic()
 
 def update(dt):
@@ -15,5 +15,5 @@ def get_dialog_controls():
     return __controls
 
 dialog_controls_info = {
-    "Enter": "Далее"
+    "Space": "Далее"
 }

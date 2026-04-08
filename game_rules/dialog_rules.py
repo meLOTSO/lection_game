@@ -1,18 +1,17 @@
+from data.dialogs.nps_scripts import NPC_FIRST_DIALOG_END_SCRIPT
 from models.dialog import clear_dialog, set_dialog_author_and_text
+from models.dialog_manager import trigger
 from models.dialog_scripts import next_replic_data
 
 
 def show_first_dialog_line():
-    """Показать первую реплику после set_script (индекс сброшен в -1)."""
-    _apply_replic(next_replic_data())
-
+    apply_replic(next_replic_data())
+    trigger(NPC_FIRST_DIALOG_END_SCRIPT)
 
 def next_replic():
-    """Следующая реплика по Enter в режиме диалога."""
-    _apply_replic(next_replic_data())
+    apply_replic(next_replic_data())
 
-
-def _apply_replic(replic_data):
+def apply_replic(replic_data):
     if replic_data is None:
         clear_dialog()
         from contexts.state_context import change_game_state

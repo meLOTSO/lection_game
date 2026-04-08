@@ -1,29 +1,23 @@
 """Пример объекта с другим типом интерактива: добавление предмета в инвентарь."""
 
 import models.inventory as inventory
-from extensions.sprite import create_sprite
+from extensions.sprite import create_sprite, set_random_pos
 from models.color import SILVER
-from models.enitites.interacting_objects import add_inetracting_object
+from models.enitites.interacting_objects import add_interacting_object
 
-LOOT_ID = "loot_silver"
+LOOT_NAME = "loot_silver"
+__loot_silvers = []
 
-__sprite = create_sprite(20, 20, SILVER)
-__sprite.x = 250
-__sprite.y = 360
-__taken = False
+def take_silver(obj):
+    inventory.append_item("silver", 1)
+    __loot_silvers.remove(obj)
 
-
-def _take_silver():
-    global __taken
-    if __taken:
-        return
-    if inventory.append_item("silver", 1):
-        __taken = True
-
-
-add_inetracting_object(__sprite, _take_silver, object_id=LOOT_ID)
-
+for i in range(5):
+    sprite = create_sprite(20, 20, SILVER, LOOT_NAME)
+    add_interacting_object(sprite, take_silver)
+    set_random_pos(sprite)
+    __loot_silvers.append(sprite)
 
 def draw_loot_silver():
-    if not __taken:
-        __sprite.draw()
+    for silver in __loot_silvers:
+        silver.draw()

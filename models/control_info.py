@@ -1,4 +1,4 @@
-from states.game_state import GameState
+from states.game_state import GameState, get_game_state
 from controls.types.dialog_controls import dialog_controls_info
 from controls.types.lose_controls import lose_controls_info
 from controls.types.menu_controls import menu_controls_info
@@ -15,3 +15,5 @@ control_info = {
     GameState.WIN: win_controls_info
 }
 
+def get_current_game_info():
+    return control_info[get_game_state()]

@@ -43,6 +43,6 @@ def on_draw():
 window.push_handlers(KEYS)
 
 # Запуск игры
-change_game_state(GameState.PUZZLE)
+change_game_state(GameState.MENU)
 
 pyglet.app.run()

@@ -20,9 +20,13 @@ def draw_player():
 def update_player_moving(dt):
     old_x, old_y = __player.x, __player.y
 
-    if KEYS[key.RIGHT]:
+    if KEYS[key.W]:
+        __player.y += PLAYER_SPEED * dt
+    elif KEYS[key.S]:
+        __player.y -= PLAYER_SPEED * dt
+    if KEYS[key.D]:
         __player.x += PLAYER_SPEED * dt
-    elif KEYS[key.LEFT]: 
+    elif KEYS[key.A]: 
         __player.x -= PLAYER_SPEED * dt
     
     if check_boundaries(__player):
