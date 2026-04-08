@@ -7,7 +7,7 @@ from extensions.physics import check_boundaries
 PLAYER_SPEED = 300
 PLAYER_NAME = "my_name"
 
-__player = create_sprite(40, 40, GREEN_LIGTH, "player")
+__player = create_sprite(40, 40, GREEN_LIGTH, PLAYER_NAME)
 __player.x = 100
 __player.y = 300
 
@@ -29,3 +29,7 @@ def update_player_moving(dt):
         __player.x = old_x
         __player.y = old_y
 
+def interaction():
+    from models.enitites.interacting_objects import try_interact
+
+    return try_interact()

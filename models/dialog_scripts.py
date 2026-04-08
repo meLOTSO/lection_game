@@ -36,14 +36,18 @@ def create_replic_data(author, replic):
     return data
 
 # Добавить реплику автора в сценарий
-def append_replic(author, replic, script_name=__current_script):
-    if script_name == None:
+def append_replic(author, replic, script_name=None):
+    if script_name is None:
+        script_name = __current_script
+    if script_name is None:
         raise Exception("Не задан сценарий для реплики")
     
     replic_data = create_replic_data(author, replic)
     __dialog_scripts[script_name].append(replic_data)
 
-def get_replics_count(script_name=__current_script):
+def get_replics_count(script_name=None):
+    if script_name is None:
+        script_name = __current_script
     if script_name in __dialog_scripts:
         return len(__dialog_scripts[script_name])
     else:
@@ -54,11 +58,13 @@ def reset_replic_index():
     __replic_index = -1
 
 def next_replic_data():
-    if __replic_index < get_replics_count():
-        return __dialog_scripts[__current_script][__replic_index]
-    else:
+    global __replic_index
+    __replic_index += 1
+    if __replic_index >= get_replics_count() or __current_script is None:
         reset_replic_index()
         return None
+    item = __dialog_scripts[__current_script][__replic_index]
+    return (item["author"], item["replic"])
 
 def contains_script(script_name):
     return script_name in __dialog_scripts

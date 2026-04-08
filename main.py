@@ -4,11 +4,16 @@ from data.init import WINDOW_WIDTH, WINDOW_HEIGHT, KEYS, FPS
 # Окно — до импортов, которые создают спрайты/текстуры (нужен активный GL-контекст)
 window = pyglet.window.Window(WINDOW_WIDTH, WINDOW_HEIGHT)
 
+import models.inventory as inventory
 from contexts.state_context import change_game_state
 import controls.game_controls as controls
 from contexts.state_draws_pair import draw
 from states.game_state import GameState
 import game_rules.puzzle_rules as puzzle_rules
+import game_rules.triggers.npc_triggers  # noqa: F401 — регистрация сценариев и триггеров NPC
+
+inventory.add_inventory_items("silver", "clay", "key")
+import models.enitites.loot_silver  # noqa: F401 — регистрация подбираемого объекта
 
 # Игровые правила
 
