@@ -1,8 +1,9 @@
+from pyglet.window import key
 from controls.utils import create_controls_dict
-from models.player import update_player_moving
+from models.enitites.player import update_player_moving
 
 def on_key_press(symbol, modifier):
-    pass
+    if key ==
 
 def update(dt):
     update_player_moving(dt)
