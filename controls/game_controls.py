@@ -1,26 +1,20 @@
-from controls.control_type import ControlType
+from enum import Enum
 
-__controls = {
-    ControlType.ON_KEY_PRESS: None,
-    ControlType.ON_TEXT: None,
-    ControlType.UPDATE: None
-}
+class ControlType(Enum):
+    ON_KEY_PRESS = 1
+    ON_TEXT = 2
+    UPDATE = 3
 
-def on_key_press(symbol, modifier):
-    func = __controls[ControlType.ON_KEY_PRESS]
-    if func != None:
-        func(symbol, modifier)
+# __controls = {
+#     ControlType.ON_KEY_PRESS: None,
+#     ControlType.ON_TEXT: None,
+#     ControlType.UPDATE: None
+# }
 
-def on_text(text):
-    func = __controls[ControlType.ON_TEXT]
-    if func != None:
-        func(text)
-
-def update(dt):
-    func = __controls[ControlType.UPDATE]
-    if func != None:
-        func(dt)
-
-def change_game_controls(controls):
-    global __controls
-    __controls = controls
+def create_controls_data(on_key_press=None, update=None, on_text=None):
+    controls = {
+        ControlType.ON_KEY_PRESS: on_key_press,
+        ControlType.ON_TEXT: on_text,
+        ControlType.UPDATE: update
+    }
+    return controls

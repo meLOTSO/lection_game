@@ -1,5 +1,5 @@
 from pyglet.window import key
-from controls.utils import create_controls_dict
+from controls.game_controls import create_controls_data
 from game_rules.dialog_rules import next_replic
 
 def on_key_press(symbol, modifier):
@@ -9,7 +9,7 @@ def on_key_press(symbol, modifier):
 def update(dt):
     pass
 
-__controls = create_controls_dict(on_key_press, update)
+__controls = create_controls_data(on_key_press, update)
 
 def get_dialog_controls():
     return __controls

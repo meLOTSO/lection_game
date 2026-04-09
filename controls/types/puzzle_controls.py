@@ -1,4 +1,4 @@
-from controls.utils import create_controls_dict
+from controls.game_controls import create_controls_data
 from pyglet.window import key
 import models.puzzle_input as puzzle_input
 from states.game_state import GameState
@@ -22,7 +22,7 @@ def on_text(text):
     if text and text.isprintable():
         puzzle_input.append_text(text)
 
-__controls = create_controls_dict(
+__controls = create_controls_data(
     on_key_press=on_key_press, 
     update=None, 
     on_text=on_text)

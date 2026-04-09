@@ -14,10 +14,9 @@ def next_replic():
 def apply_replic(replic_data):
     if replic_data is None:
         clear_dialog()
-        from contexts.state_context import change_game_state
-        from states.game_state import GameState
+        from contexts.state_context import to_running
 
-        change_game_state(GameState.RUNNING)
+        to_running()
         return
     author, text = replic_data
     set_dialog_author_and_text(author, text)

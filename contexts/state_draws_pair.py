@@ -1,4 +1,4 @@
-from states.game_state import GameState
+from states.game_state import GameState, get_game_state
 from draws.dialog_draw import dialog_draw
 from draws.lose_draw import lose_draw
 from draws.menu_draw import menu_draw
@@ -6,7 +6,7 @@ from draws.puzzle_draw import puzzle_draw
 from draws.running_draw import running_draw
 from draws.win_draw import win_draw
 
-__draws = []
+# Зарегистрированные отрисовки
 
 state_draws_pair = {
     GameState.MENU: [menu_draw],
@@ -17,10 +17,26 @@ state_draws_pair = {
     GameState.WIN: [win_draw],
 }
 
-def draw():
-    for drw in __draws:
-        drw()
+# Список функций отрисовок - зарегистрированные отрисовки
+# (содержит функции для отрисовок)
+
+__draws = []
+
+def append_draw(on_draw):
+    __draws.append(on_draw)
+
+def remove_draw(on_draw):
+    if (on_draw in __draws) and (on_draw not in state_draws_pair[get_game_state()]):
+        __draws.remove(on_draw)
+
+# Регистрация отрисовки
 
 def set_draw(game_state):
     global __draws
     __draws = state_draws_pair[game_state]
+
+# Отрисовка 
+
+def draw():
+    for drw in __draws:
+        drw()

@@ -15,5 +15,11 @@ control_info = {
     GameState.WIN: win_controls_info
 }
 
-def get_current_game_info():
-    return control_info[get_game_state()]
+__control_info = {}
+
+def get_control_info():
+    return __control_info
+
+def apple_control_info():
+    global __control_info
+    __control_info = control_info[get_game_state()]

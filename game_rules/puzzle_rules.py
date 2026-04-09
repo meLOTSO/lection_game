@@ -1,16 +1,15 @@
-from contexts.state_context import change_game_state
+from contexts.state_context import to_dialog
 from models.dialog import set_dialog_author_and_text
 import models.puzzle_input as puzzle_input
 from data.game_data import game_data
 from draws.puzzle_draw import update_input_label_info
-from states.game_state import GameState
 
 
 def check_puzzle(text):
     if text == game_data["puzzle_passwd"]:
         game_data["chest_locked"] = False
         set_dialog_author_and_text(game_data["player_name"], "Сундук открыт! Здесь и вправду было 2 серебра.")
-        change_game_state(GameState.DIALOG)
+        to_dialog()
     else:
         puzzle_input.reset()
 

@@ -1,5 +1,5 @@
 from pyglet.window import key
-from controls.utils import create_controls_dict
+from controls.game_controls import create_controls_data
 from states.game_state import GameState
 
 def on_key_press(symbol, modifier):
@@ -8,7 +8,7 @@ def on_key_press(symbol, modifier):
 
         change_game_state(GameState.RUNNING)
 
-__controls = create_controls_dict(
+__controls = create_controls_data(
     on_key_press=on_key_press)
 
 def get_menu_controls():

@@ -1,5 +1,5 @@
 from pyglet.window import key
-from controls.utils import create_controls_dict
+from controls.game_controls import create_controls_data
 from models.enitites.interacting_objects import try_interact
 from models.enitites.player import update_player_moving
 
@@ -8,11 +8,10 @@ def on_key_press(symbol, modifier):
     if symbol == key.E:
         try_interact()
 
-
 def update(dt):
     update_player_moving(dt)
 
-__controls = create_controls_dict(
+__controls = create_controls_data(
     on_key_press=on_key_press, 
     update=update)
 
