@@ -1,10 +1,11 @@
 import contexts.state_controls_pair as state_controls_pair
 import contexts.state_draws_pair as state_draws_pair
-from states.game_state import GameState
+from states.game_state import GameState, set_game_state
 
 # Сменя состояний игры
 
 def change_game_state(game_state):
+    set_game_state(game_state)
     state_controls_pair.set_controls(game_state)
     state_draws_pair.set_draw(game_state)
 

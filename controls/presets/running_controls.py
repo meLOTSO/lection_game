@@ -11,12 +11,9 @@ def on_key_press(symbol, modifier):
 def update(dt):
     update_player_moving(dt)
 
-__controls = create_controls_data(
+running_controls = create_controls_data(
     on_key_press=on_key_press, 
     update=update)
-
-def get_running_controls():
-    return __controls
 
 running_controls_info = {
     "A": "Идти влево",

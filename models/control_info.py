@@ -1,12 +1,12 @@
-from states.game_state import GameState, get_game_state
-from controls.types.dialog_controls import dialog_controls_info
-from controls.types.lose_controls import lose_controls_info
-from controls.types.menu_controls import menu_controls_info
-from controls.types.puzzle_controls import puzzle_controls_info
-from controls.types.running_controls import running_controls_info
-from controls.types.win_controls import win_controls_info
+from states.game_state import GameState
+from controls.presets.dialog_controls import dialog_controls_info
+from controls.presets.lose_controls import lose_controls_info
+from controls.presets.menu_controls import menu_controls_info
+from controls.presets.puzzle_controls import puzzle_controls_info
+from controls.presets.running_controls import running_controls_info
+from controls.presets.win_controls import win_controls_info
 
-control_info = {
+__controls_info = {
     GameState.DIALOG: dialog_controls_info,
     GameState.LOSE: lose_controls_info,
     GameState.MENU: menu_controls_info,
@@ -20,6 +20,12 @@ __control_info = {}
 def get_control_info():
     return __control_info
 
-def apple_control_info():
+def set_control_info(game_state):
     global __control_info
-    __control_info = control_info[get_game_state()]
+    # копия, чтобы не менять исходные словари пресетов при append/update
+    __control_info = dict(__controls_info[game_state])
+
+def append_control_info(control_info):
+    global __control_info
+    __control_info.update(control_info)
+

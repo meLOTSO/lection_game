@@ -9,10 +9,7 @@ def on_key_press(symbol, modifier):
 def update(dt):
     pass
 
-__controls = create_controls_data(on_key_press, update)
-
-def get_dialog_controls():
-    return __controls
+dialog_controls = create_controls_data(on_key_press, update)
 
 dialog_controls_info = {
     "Space": "Далее"

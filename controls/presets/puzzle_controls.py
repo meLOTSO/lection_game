@@ -22,13 +22,10 @@ def on_text(text):
     if text and text.isprintable():
         puzzle_input.append_text(text)
 
-__controls = create_controls_data(
+puzzle_controls = create_controls_data(
     on_key_press=on_key_press, 
     update=None, 
     on_text=on_text)
-
-def get_puzzle_controls():
-    return __controls
 
 puzzle_controls_info = {
     "Enter": "Подтвердить",

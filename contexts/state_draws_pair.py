@@ -21,13 +21,14 @@ state_draws_pair = {
 # (содержит функции для отрисовок)
 
 __draws = []
+__extensions_draw = []
 
-def append_draw(on_draw):
-    __draws.append(on_draw)
+def append_extension_draw(on_draw):
+    __extensions_draw.append(on_draw)
 
-def remove_draw(on_draw):
-    if (on_draw in __draws) and (on_draw not in state_draws_pair[get_game_state()]):
-        __draws.remove(on_draw)
+def remove_extension_draw(on_draw):
+    if on_draw in __extensions_draw:
+        __extensions_draw.remove(on_draw)
 
 # Регистрация отрисовки
 
@@ -40,3 +41,5 @@ def set_draw(game_state):
 def draw():
     for drw in __draws:
         drw()
+    for ext_drw in __extensions_draw:
+        ext_drw()

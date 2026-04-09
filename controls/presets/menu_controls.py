@@ -8,11 +8,8 @@ def on_key_press(symbol, modifier):
 
         change_game_state(GameState.RUNNING)
 
-__controls = create_controls_data(
+menu_controls = create_controls_data(
     on_key_press=on_key_press)
-
-def get_menu_controls():
-    return __controls
 
 menu_controls_info = {
     "Enter": "Начать"
