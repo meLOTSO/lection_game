@@ -4,8 +4,6 @@ from data.init import WINDOW_HEIGHT
 
 __inventory = dict()
 
-__label = pyglet.text.Label("Инвентарь:", anchor_x="left", anchor_y="top", x=50, y=WINDOW_HEIGHT-50, font_size=24)
-
 def get_inventory():
     return __inventory
 
@@ -50,5 +48,3 @@ def reset_inventory():
     for key in __inventory:
         __inventory[key] = 0
 
-def draw_inventory():
-    __label.draw()

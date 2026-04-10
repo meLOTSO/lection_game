@@ -11,8 +11,8 @@ from draws.win_draw import win_draw
 state_draws_pair = {
     GameState.MENU: [menu_draw],
     GameState.RUNNING: [running_draw],
-    GameState.DIALOG: [dialog_draw, running_draw],
-    GameState.PUZZLE: [puzzle_draw, running_draw],
+    GameState.DIALOG: [running_draw, dialog_draw],
+    GameState.PUZZLE: [running_draw, puzzle_draw],
     GameState.LOSE: [lose_draw],
     GameState.WIN: [win_draw],
 }
@@ -21,14 +21,6 @@ state_draws_pair = {
 # (содержит функции для отрисовок)
 
 __draws = []
-__extensions_draw = []
-
-def append_extension_draw(on_draw):
-    __extensions_draw.append(on_draw)
-
-def remove_extension_draw(on_draw):
-    if on_draw in __extensions_draw:
-        __extensions_draw.remove(on_draw)
 
 # Регистрация отрисовки
 
@@ -41,5 +33,3 @@ def set_draw(game_state):
 def draw():
     for drw in __draws:
         drw()
-    for ext_drw in __extensions_draw:
-        ext_drw()

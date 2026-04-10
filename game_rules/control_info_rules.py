@@ -1,5 +1,5 @@
 from models.control_info import set_control_info, append_control_info
-from contexts.state_draws_pair import append_extension_draw, remove_extension_draw
+from contexts.extensions_draw import append_extension_draw, remove_extension_draw
 from states.game_state import get_game_state
 from draws.control_info_draw import draw_control_info
 import extensions.events as events

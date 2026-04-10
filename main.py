@@ -3,6 +3,7 @@ from data.init import WINDOW_WIDTH, WINDOW_HEIGHT, KEYS, FPS
 
 # Окно — до импортов, которые создают спрайты/текстуры (нужен активный GL-контекст)
 window = pyglet.window.Window(WINDOW_WIDTH, WINDOW_HEIGHT, resizable=False)
+pyglet.gl.glClearColor(0.2, 0.3, 0.5, 1.0)
 
 import models.inventory as inventory
 import contexts.state_context as state_context

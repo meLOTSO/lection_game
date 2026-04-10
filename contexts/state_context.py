@@ -1,5 +1,6 @@
 import contexts.state_controls_pair as state_controls_pair
 import contexts.state_draws_pair as state_draws_pair
+import contexts.extensions_draw as extensions_draw
 from states.game_state import GameState, set_game_state
 
 # Сменя состояний игры
@@ -44,3 +45,4 @@ def on_text(text):
 
 def draw():
     state_draws_pair.draw()
+    extensions_draw.draw()

@@ -1,6 +1,7 @@
-from draws.running_draw import running_draw
-from models.dialog import draw_dialog
+from models.dialog import dialog_box, dialog_label, dialog_author_label
 
 def dialog_draw():
-    draw_dialog()
+    dialog_box.draw()
+    dialog_label.draw()
+    dialog_author_label.draw()
 
