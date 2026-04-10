@@ -1,50 +1,43 @@
-import pyglet
+# inv = {
+#     "item_name": [item, item]
+# }
 
-from data.init import WINDOW_HEIGHT
+inventory = dict()
 
-__inventory = dict()
-
-def get_inventory():
-    return __inventory
-
-def add_inventory_items(*args):
-    for item in args:
-        __inventory[item] = 0
+def register_for_inventory(item_name):
+    inventory[item_name] = []
 
 def get_inventory_items():
-    inventory = dict()
-    for key, value in __inventory.items():
+    inv = dict()
+    for key, value in inventory.items():
         if value > 0:
-            inventory[key] = value
-    return inventory
+            inv[key] = value
+    return inv
 
-def has_item(name, count=1):
-    return __inventory.get(name, 0) >= count
+def get_items_count(item_name):
+    if item_name in inventory:
+        return len(inventory[item_name])
+    else:
+        return 0
 
-def append_item(name, count=1):
-    if name in __inventory:
-        __inventory[name] += count
-        return True
-    return False
+def contains_item(item_name, count=1):
+    return get_items_count(item_name) >= count
 
-def get_item_count(name):
-    __inventory.get(name, 0);
+def append_item(obj):
+    item_name = str(obj)
+    if item_name in inventory:
+        inventory[item_name].append(obj)
 
-def remove_item(name):
-    if name in __inventory:
-        __inventory[name] = 0
+def clear_items(item_name):
+    if item_name in inventory:
+        inventory[item_name].clear()
 
-def try_take_item(name, count=1):
-    if name in __inventory and __inventory[name] >= count:
-        __inventory[name] -= count
-        return True
-    return False
-
-def take_item(name, count=1):
-    if not try_take_item(name, count):
-        remove_item(name)
+def take_item(item_name):
+    if contains_item(item_name):
+        item = inventory.pop(item_name)
+    return None
 
 def reset_inventory():
-    for key in __inventory:
-        __inventory[key] = 0
+    for item_name in inventory:
+        inventory[item_name].clear()
 

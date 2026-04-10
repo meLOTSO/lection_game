@@ -7,33 +7,28 @@ from extensions.physics import check_boundaries
 PLAYER_SPEED = 300
 PLAYER_NAME = "my_name"
 
-__player = create_sprite(40, 40, GREEN_LIGTH, PLAYER_NAME)
-__player.x = 100
-__player.y = 300
+player = create_sprite(40, 40, GREEN_LIGTH, PLAYER_NAME)
+player.x = 100
+player.y = 300
 
 def get_player():
-    return __player
+    return player
 
 def draw_player():
-    __player.draw()
+    player.draw()
 
 def update_player_moving(dt):
-    old_x, old_y = __player.x, __player.y
+    old_x, old_y = player.x, player.y
 
     if KEYS[key.W]:
-        __player.y += PLAYER_SPEED * dt
+        player.y += PLAYER_SPEED * dt
     elif KEYS[key.S]:
-        __player.y -= PLAYER_SPEED * dt
+        player.y -= PLAYER_SPEED * dt
     if KEYS[key.D]:
-        __player.x += PLAYER_SPEED * dt
+        player.x += PLAYER_SPEED * dt
     elif KEYS[key.A]: 
-        __player.x -= PLAYER_SPEED * dt
+        player.x -= PLAYER_SPEED * dt
     
-    if check_boundaries(__player):
-        __player.x = old_x
-        __player.y = old_y
-
-def interaction():
-    from models.enitites.interacting_objects import try_interact
-
-    return try_interact()
+    if check_boundaries(player):
+        player.x = old_x
+        player.y = old_y

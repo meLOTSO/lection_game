@@ -1,9 +1,9 @@
-from models.inventory import get_inventory
-from models.enitites.player import get_player, PLAYER_NAME
+from models.inventory import inventory
+from models.enitites.player import player, PLAYER_NAME
 
 game_data = {
-    "player": get_player(),
-    "inventory": get_inventory(),
+    "player": player,
+    "inventory": inventory,
     "door_locked": True,
     "chest_locked": True,
     "npc_talked": False,

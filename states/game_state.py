@@ -15,6 +15,8 @@ def set_game_state(new_state):
     global __current_state
     __current_state = new_state
     events.apply_event("on_set_game_state")
+    if new_state == GameState.PUZZLE:
+        events.apply_event("on_set_puzzle_game_state")
 
 def get_game_state():
     return __current_state

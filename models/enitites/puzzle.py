@@ -1,6 +1,6 @@
 from extensions.sprite import create_sprite
 from models.color import BROWN
-from models.enitites.interacting_objects import add_interacting_object
+import extensions.interacting as interacting
 
 PUZZLE_NAME = "puzzle"
 
@@ -13,7 +13,7 @@ def puzzle_interact(obj):
     to_puzzle()
     # диалоги прописать
     
-add_interacting_object(puzzle, puzzle_interact)
+interacting.append_interacting(puzzle, puzzle_interact)
 
 def draw_puzzle():
     puzzle.draw()

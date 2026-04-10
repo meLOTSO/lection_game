@@ -8,14 +8,9 @@ pyglet.gl.glClearColor(0.2, 0.3, 0.5, 1.0)
 import models.inventory as inventory
 import contexts.state_context as state_context
 import game_rules.puzzle_rules as puzzle_rules
-import game_rules.triggers.npc_triggers  # noqa: F401 — регистрация сценариев и триггеров NPC
+# import game_rules.triggers.npc_triggers  # noqa: F401 — регистрация сценариев и триггеров NPC
 
-inventory.add_inventory_items("silver", "clay", "key")
-import models.enitites.loot_silver  # noqa: F401 — регистрация подбираемого объекта
-
-# Игровые правила
-
-puzzle_rules.add_puzzle_rules()
+# import models.enitites.clay  # noqa: F401 — регистрация подбираемого объекта
 
 # Обновления
 
